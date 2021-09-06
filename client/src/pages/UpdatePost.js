@@ -25,9 +25,8 @@ const useStyles = makeStyles({
     display: "block",
   },
 });
-const Create = () => {
+const UpdatePost = ({ handleClose, post }) => {
   const classes = useStyles();
-  const history = useHistory();
 
   const [postData, setPostData] = useState({
     title: "",
@@ -37,14 +36,16 @@ const Create = () => {
     category: "",
   });
 
+  if (postData.title.length < 1) setPostData(post);
+
   const dispatch = useDispatch();
 
-  const { createPost } = bindActionCreators(postActions, dispatch);
+  const { updatePost } = bindActionCreators(postActions, dispatch);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(postData); // will delete
-    await createPost(postData);
+    await updatePost(post._id, postData);
+    handleClose();
   };
 
   return (
@@ -55,7 +56,7 @@ const Create = () => {
         display="block"
         gutterBottom
       >
-        Create a New Post
+        Update Post
       </Typography>
       <form autoComplete="off" onSubmit={submitHandler}>
         <TextField
@@ -159,11 +160,11 @@ const Create = () => {
           variant="contained"
           endIcon={<SendIcon />}
         >
-          Create
+          Update
         </Button>
       </form>
     </Container>
   );
 };
 
-export default Create;
+export default UpdatePost;

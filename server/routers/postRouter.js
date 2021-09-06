@@ -50,11 +50,11 @@ router.put("/:id", async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).json({ message: "Post id is not valid" });
 
-    const { title, content, creator, image } = req.body;
+    const { title, content, creator,category,  image } = req.body;
 
     const updatedPost = await Post.findByIdAndUpdate(
       id,
-      { title, content, creator, image, _id: id },
+      { title, content, creator,category, image, _id: id },
       { new: true }
     );
 

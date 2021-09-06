@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import {
   Drawer,
@@ -11,6 +11,9 @@ import {
 import { AddCircleOutlined, SubjectOutlined } from "@material-ui/icons";
 import { useHistory, useLocation } from "react-router";
 import { AppBar, Toolbar } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { postActions } from "../redux/actions/index";
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => {
   return {
@@ -45,15 +48,23 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const history = useHistory();
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const { fetchAllPosts } = bindActionCreators(postActions, dispatch);
+
+  useEffect(() => {
+    const getPosts = async () => await fetchAllPosts();
+    getPosts();
+  }, [location]);
 
   const menuItems = [
     {
-      text: "My Notes",
+      text: "Posts",
       icon: <SubjectOutlined color="secondary" />,
       path: "/",
     },
     {
-      text: "Create Note",
+      text: "Create a Post",
       icon: <AddCircleOutlined color="secondary" />,
       path: "/create",
     },
@@ -62,7 +73,7 @@ const Layout = ({ children }) => {
     <div className={classes.root}>
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <Typography>Welcome to My Notes Project</Typography>
+          <Typography>Shared Posts</Typography>
         </Toolbar>
       </AppBar>
       <Drawer
