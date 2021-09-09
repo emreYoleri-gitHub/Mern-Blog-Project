@@ -45,6 +45,13 @@ const Create = () => {
     e.preventDefault();
     console.log(postData); // will delete
     await createPost(postData);
+    setPostData({
+      title: "",
+      content: "",
+      creator: "",
+      image: "",
+      category: "",
+    });
   };
 
   return (
@@ -54,6 +61,7 @@ const Create = () => {
         color="textSecondary"
         display="block"
         gutterBottom
+        
       >
         Create a New Post
       </Typography>
@@ -66,6 +74,7 @@ const Create = () => {
           variant="outlined"
           color="secondary"
           fullWidth
+          required
         />
         <TextField
           value={postData.creator}
@@ -77,6 +86,8 @@ const Create = () => {
           variant="outlined"
           color="secondary"
           fullWidth
+          required
+
         />
         <TextField
           value={postData.content}
@@ -90,6 +101,7 @@ const Create = () => {
           multiline
           rows={4}
           fullWidth
+          required
         />
         <ReactFileBase64
           type="file"

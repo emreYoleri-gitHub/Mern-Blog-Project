@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
 
     res.status(201).json(createdPost);
   } catch (error) {
-    res.json({ message: "create post faled" });
+    res.json({ message: "create post failed" });
   }
 });
 

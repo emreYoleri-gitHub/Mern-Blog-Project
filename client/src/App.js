@@ -28,6 +28,7 @@ const App = () => {
             <Route path="/create">
               <Create />
             </Route>
+           
           </Switch>
         </Layout>
       </Router>
