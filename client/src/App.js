@@ -4,6 +4,7 @@ import Create from "./pages/Create";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import Layout from "./components/Layout";
+import SignIn from "./pages/SignIn";
 
 const theme = createTheme({
   palette: {
@@ -21,6 +22,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <Layout>
+          <Route exact path="/login" component={SignIn} />
           <Switch>
             <Route exact path="/">
               <Notes />
@@ -28,7 +30,6 @@ const App = () => {
             <Route path="/create">
               <Create />
             </Route>
-           
           </Switch>
         </Layout>
       </Router>

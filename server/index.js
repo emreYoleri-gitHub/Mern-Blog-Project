@@ -3,15 +3,16 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import postRouter from "./routers/postRouter.js";
+import userRouter from "./routers/userRouter.js";
 
 dotenv.config();
 const app = express();
 
 app.use(express.json({ limit: "20mb" }));
-app.use(cors({credentials : true , origin : "http://localhost:3000"}));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.use("/posts", postRouter);
-
+app.use("/users", userRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "connected" });

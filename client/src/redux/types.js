@@ -9,3 +9,11 @@ export const DELETE_POST_FAIL = "DELETE_POST_FAIL";
 
 export const UPDATE_POST_SUCCESS = "UPDATE_POST_SUCCESS";
 export const UPDATE_POST_FAIL = "UPDATE_POST_FAIL";
+
+export const AUTH = "AUTH";
+export const AUTO_SIGNIN_SUCCESS = "AUTO_SIGNIN_SUCCESS"
+export const AUTO_SIGNIN_FAIL = "AUTO_SIGNIN_FAIL"
+export const SIGNUP_FAIL = "SIGNUP_FAIL";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";
+export const SIGNIN_FAIL = "SIGNIN_FAIL";

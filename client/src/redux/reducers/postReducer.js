@@ -35,6 +35,7 @@ const postReducer = (state = initialState, action) => {
     /* Delete Post */
 
     case actionTypes.DELETE_POST_SUCCESS:
+      localStorage.removeItem("posts");
       return {
         ...state,
         posts: [...state.posts.filter((post) => post._id !== action.payload)],
